@@ -50,4 +50,5 @@ Temporary Items
 *dll*
 *tmp*
 *.dat.*
+*.pyc
 *.ntvs_analysis.dat.tmp*
