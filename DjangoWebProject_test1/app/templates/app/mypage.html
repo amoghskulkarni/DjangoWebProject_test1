@@ -1,0 +1,18 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1>My Page</h1>
+    <p class="lead">Give a text input.</p>
+    <p><a id="mybutton" class="btn btn-primary btn-large">Click me! &raquo;</a></p>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+{% load staticfiles %}
+<script src="{% static 'app/scripts/myjsscript.js' %}"></script>
+
+{% endblock %}

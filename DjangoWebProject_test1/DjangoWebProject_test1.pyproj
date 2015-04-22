@@ -48,8 +48,12 @@
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
     <Folder Include="DjangoWebProject_test1\" />
+    <Folder Include="DjangoWebProject_test1\media\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\static\app\scripts\myjsscript.js" />
+    <Content Include="app\templates\app\mypage.html" />
+    <Content Include="app\templates\app\upload.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />

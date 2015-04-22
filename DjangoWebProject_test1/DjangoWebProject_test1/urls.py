@@ -3,8 +3,10 @@ Definition of urls for DjangoWebProject_test1.
 """
 
 from datetime import datetime
-from django.conf.urls import patterns, url
+from django.conf.urls import patterns, include, url
 from app.forms import BootstrapAuthenticationForm
+from django.conf import settings
+from django.conf.urls.static import static
 
 # Uncomment the next lines to enable the admin:
 # from django.conf.urls import include
@@ -40,4 +42,6 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-)
+    url(r'^mypage$', 'app.views.mypage', name='mypage'),
+    url(r'^upload$', 'app.views.upload', name='upload'),
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
