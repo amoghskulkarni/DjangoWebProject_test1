@@ -11,3 +11,16 @@ G:\TestWorkspace\DjangoWebProject_test1\DjangoWebProject_test1\bin\Microsoft.Pyt
 G:\TestWorkspace\DjangoWebProject_test1\DjangoWebProject_test1\bin\wfastcgi.py
 G:\TestWorkspace\DjangoWebProject_test1\DjangoWebProject_test1\obj\Debug\web.config
 G:\TestWorkspace\DjangoWebProject_test1\DjangoWebProject_test1\obj\Debug\web.debug.config
+D:\Vanderbilt\Web programming\DjangoWebProject_test1\DjangoWebProject_test1\bin\Microsoft.PythonTools.WebRole.dll
+D:\Vanderbilt\Web programming\DjangoWebProject_test1\DjangoWebProject_test1\obj\Debug\attach_server.py
+D:\Vanderbilt\Web programming\DjangoWebProject_test1\DjangoWebProject_test1\obj\Debug\visualstudio_py_debugger.py
+D:\Vanderbilt\Web programming\DjangoWebProject_test1\DjangoWebProject_test1\obj\Debug\visualstudio_py_repl.py
+D:\Vanderbilt\Web programming\DjangoWebProject_test1\DjangoWebProject_test1\obj\Debug\visualstudio_py_util.py
+D:\Vanderbilt\Web programming\DjangoWebProject_test1\DjangoWebProject_test1\obj\Debug\__init__.py
+D:\Vanderbilt\Web programming\DjangoWebProject_test1\DjangoWebProject_test1\obj\Debug\__main__.py
+D:\Vanderbilt\Web programming\DjangoWebProject_test1\DjangoWebProject_test1\bin\AzureSetup.cfg
+D:\Vanderbilt\Web programming\DjangoWebProject_test1\DjangoWebProject_test1\bin\Microsoft.PythonTools.AzureSetup.exe
+D:\Vanderbilt\Web programming\DjangoWebProject_test1\DjangoWebProject_test1\bin\Microsoft.PythonTools.AzureSetup.exe.config
+D:\Vanderbilt\Web programming\DjangoWebProject_test1\DjangoWebProject_test1\bin\wfastcgi.py
+D:\Vanderbilt\Web programming\DjangoWebProject_test1\DjangoWebProject_test1\obj\Debug\web.config
+D:\Vanderbilt\Web programming\DjangoWebProject_test1\DjangoWebProject_test1\obj\Debug\web.debug.config

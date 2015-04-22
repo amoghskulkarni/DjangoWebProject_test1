@@ -16,6 +16,7 @@ from app.forms import DocumentForm
 
 def home(request):
     """Renders the home page."""
+    #Test Comment 
     assert isinstance(request, HttpRequest)
     return render(
         request,
