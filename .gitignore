@@ -41,3 +41,13 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+*node_modules*
+*vagrant*
+*~*
+*#*
+*dll*
+*tmp*
+*.dat.*
+*.ntvs_analysis.dat.tmp*
