@@ -3,14 +3,17 @@
 {% block content %}
 
     {% if documents %}
-	    <ul>
-	    {% for document in documents %}
-		    <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
-	    {% endfor %}
-	    </ul>
+	    <div class="form-group">
+            <select id="uploaded_files" class="form-control">
+	        {% for document in documents %}
+		        <option value="{{ document.docfile.name }}" href="{{ document.docfile.url }}"> {{ document.docfile.name }} </option>
+	        {% endfor %}
+            </select>
+	    </div>
     {% else %}
 	    <p>No documents.</p>
     {% endif %}
+
 
     <!-- Upload form. Note enctype attribute! -->
     <form action="{% url "upload" %}" method="post" enctype="multipart/form-data">
@@ -21,7 +24,9 @@
 		    {{ form.docfile.errors }}
 		    {{ form.docfile }}
 	    </p>
-	    <p><input type="submit" value="Upload" /></p>
+	    <p><input class="btn btn-default" type="submit" value="Upload" /></p>
     </form>
+
+    
 
 {% endblock %}
