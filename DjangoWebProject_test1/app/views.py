@@ -10,9 +10,13 @@ from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from datetime import datetime
 from django.core.urlresolvers import reverse
+from django.views.decorators.csrf import csrf_exempt
 
 from app.models import Document
 from app.forms import DocumentForm
+
+#Ayan: Added import analytics
+from analytics import testAnalytics
 
 def home(request):
     """Renders the home page."""
@@ -92,3 +96,10 @@ def upload(request):
         {'documents': documents, 'form': form},
         context_instance=RequestContext(request)
     )
+
+@csrf_exempt
+def testPost(request):
+    print "This is to test : "
+    print  list(request.POST)[0]
+    print testAnalytics(list(request.POST)[0])
+    

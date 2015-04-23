@@ -44,4 +44,5 @@ urlpatterns = patterns('',
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^mypage$', 'app.views.mypage', name='mypage'),
     url(r'^upload$', 'app.views.upload', name='upload'),
+    url(r'^testPost$', 'app.views.testPost', name='testPost')
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

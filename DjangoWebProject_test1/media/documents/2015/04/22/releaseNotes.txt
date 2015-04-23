@@ -1,0 +1,8 @@
+Release Notes:
+
+The Spatio-temporal modeling of Crime project consists of 4 primary code files and several other dependencies. This document summarizes the code requirements and the way the code files need to be run.
+
+Main Files:
+1. calculateCrimePerDayPerTimeZone : creates a textFile that lists number of crime per day per time Zone. This is read by the file 2 as an input while generating features for inter-arrival times. 
+	IP: 
+2. interArrivalTimesWithCensoring : reads crime data in excel format and generates inter-arrival times. Takes censoring into account.
