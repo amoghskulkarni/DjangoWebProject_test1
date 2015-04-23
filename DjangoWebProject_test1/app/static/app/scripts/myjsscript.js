@@ -40,4 +40,24 @@
         //    console.log("error!!")
         //});
     });
+    $('#imgButton').click(function (e) {
+        e.preventDefault();
+        alert("get image clicked");        
+        var DATA = 'test data';
+        $.ajax({
+            url: "/testImageResponse",
+            type: "POST",
+            //data: data,
+            data: { 'data': DATA, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value },
+            success: function (response) {
+                alert("In success. Got - " + response);
+            },
+            complete: function (response) {
+                document.getElementById('imageDiv').style.backgroundImage = response //incorrect line
+            },
+            error: function (xhr, textStatus, thrownError) {
+                alert("error doing something");
+            }
+        });
+    });
 });
