@@ -11,7 +11,7 @@
         // alert(res.value);
     });
     $('#postButton').click(function (e) {
-        //e.preventDefault();
+        e.preventDefault();
         alert("clicked");
         var data = 'Joe is a good boy';
         var age = 20;
