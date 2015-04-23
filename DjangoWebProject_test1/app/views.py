@@ -102,4 +102,5 @@ def testPost(request):
     print "This is to test : "
     print  list(request.POST)[0]
     print testAnalytics(list(request.POST)[0])
+    return HttpResponse("Success!")
     

@@ -19,8 +19,12 @@
             url:"/testPost",
             type: "POST",
             data: data,
-            success: function (response) { },            
-            complete:function(){},
+            success: function (response) {
+                alert("In success. Got - " + response);
+            },
+            complete: function (response) {
+                alert("In complete. Got - " + response);
+            },
             error:function (xhr, textStatus, thrownError){
                 alert("error doing something");
                 }
