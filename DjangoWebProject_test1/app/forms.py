@@ -12,6 +12,12 @@ class DocumentForm(forms.Form):
         label='Select a file'
     )
 
+    def __init__(self, *args, **kwargs):
+        super(DocumentForm, self).__init__(*args, **kwargs)
+        self.fields['docfile'].widget.attrs.update({'class': 'form-control'})
+
+
+
 class BootstrapAuthenticationForm(AuthenticationForm):
     """Authentication form which uses boostrap CSS."""
     username = forms.CharField(max_length=254,

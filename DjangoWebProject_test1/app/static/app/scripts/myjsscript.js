@@ -1,6 +1,7 @@
 ﻿$(document).ready(function () {
     var nameVal = 'Joe';
     var age = 20;
+
     $("#mybutton").click(function (event) {
         //var res = $.get("/myrequest", "Hello!",
         //function (data, status) {
@@ -13,14 +14,19 @@
     $('#postButton').click(function (e) {
         e.preventDefault();
         alert("clicked");
-        var data = 'Joe is a good boy';
-        var age = 20;
+//      var data = 'Joe is a good boy';
+        var DATA = 'test data';
         $.ajax({
             url:"/testPost",
             type: "POST",
-            data: data,
-            success: function (response) { },            
-            complete:function(){},
+            //data: data,
+            data: { 'data': DATA, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value },
+            success: function (response) {
+                alert("In success. Got - " + response);
+            },
+            complete: function (response) {
+                alert("In complete. Got - " + response);
+            },
             error:function (xhr, textStatus, thrownError){
                 alert("error doing something");
                 }
