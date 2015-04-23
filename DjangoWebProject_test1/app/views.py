@@ -97,10 +97,10 @@ def upload(request):
         context_instance=RequestContext(request)
     )
 
-@csrf_exempt
+#@csrf_exempt
 def testPost(request):
     print "This is to test : "
-    print  list(request.POST)[0]
-    print testAnalytics(list(request.POST)[0])
+    dataFromClient = dict(request.POST)['data'][0]
+    print testAnalytics(dataFromClient)
     return HttpResponse("Success!")
     
