@@ -15,6 +15,11 @@ from django.views.decorators.csrf import csrf_exempt
 from app.models import Document
 from app.forms import DocumentForm
 
+from app.forms import BootstrapAuthenticationForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
+
 #Ayan: Added import analytics
 from analytics import testAnalytics
 #Ayan: Added image import
@@ -113,3 +118,18 @@ def testPost(request):
 #    img.save(response,'png')
 #    return response
     
+def register(request):
+    if request.method == 'POST':
+	form = BootstrapAuthenticationForm(request.POST)
+	if form.is_valid():
+		form.save()
+		return HttpResponseRedirect('register_success')
+
+    args={}
+    
+    args['form'] = BootstrapAuthenticationForm()
+    print args
+    return render_to_response('app/register.html', args)
+	
+def register_success(request):
+    return render_to_request('app/register_success.html')
