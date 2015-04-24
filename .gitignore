@@ -51,4 +51,4 @@ Temporary Items
 *tmp*
 *.dat.*
 *.pyc
-*.ntvs_analysis.dat.tmp*
+*.tmp*
