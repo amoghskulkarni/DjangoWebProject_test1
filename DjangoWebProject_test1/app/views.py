@@ -99,17 +99,10 @@ def upload(request):
         context_instance=RequestContext(request)
     )
 
-#@csrf_exempt
 def testPost(request):
     print "This is to test : "
     dataFromClient = dict(request.POST)['data'][0]
     print testAnalytics(dataFromClient)
     return HttpResponse("Success!")
 
-#@csrf_exempt
-#def testImageResponse(request):
-#    response = HttpResponse(content_type="image/png")
-#    img = Image.open("D:\Vanderbilt\Web programming\\testImage.png")
-#    img.save(response,'png')
-#    return response
     
