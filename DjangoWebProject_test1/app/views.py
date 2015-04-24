@@ -18,7 +18,7 @@ from app.forms import DocumentForm
 #Ayan: Added import analytics
 from analytics import testAnalytics
 #Ayan: Added image import
-from PIL import Image
+#from PIL import Image
 
 def home(request):
     """Renders the home page."""
@@ -106,10 +106,10 @@ def testPost(request):
     print testAnalytics(dataFromClient)
     return HttpResponse("Success!")
 
-@csrf_exempt
-def testImageResponse(request):
-    response = HttpResponse(content_type="image/png")
-    img = Image.open("D:\Vanderbilt\Web programming\\testImage.png")
-    img.save(response,'png')
-    return response
+#@csrf_exempt
+#def testImageResponse(request):
+#    response = HttpResponse(content_type="image/png")
+#    img = Image.open("D:\Vanderbilt\Web programming\\testImage.png")
+#    img.save(response,'png')
+#    return response
     

@@ -45,5 +45,5 @@ urlpatterns = patterns('',
     url(r'^mypage$', 'app.views.mypage', name='mypage'),
     url(r'^upload$', 'app.views.upload', name='upload'),
     url(r'^testPost$', 'app.views.testPost', name='testPost'),
-    url(r'^testImageResponse$', 'app.views.testImageResponse', name='testImageResponse')
+    #url(r'^testImageResponse$', 'app.views.testImageResponse', name='testImageResponse')
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
