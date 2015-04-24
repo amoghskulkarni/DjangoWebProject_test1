@@ -21,7 +21,7 @@ from django.contrib.auth.models import User
 
 
 #Ayan: Added import analytics
-from analytics import testAnalytics
+#from analytics import testAnalytics
 #Ayan: Added image import
 #from PIL import Image
 
@@ -120,11 +120,18 @@ def testPost(request):
     
 def register(request):
     if request.method == 'POST':
-	form = BootstrapAuthenticationForm(request.POST)
+	form = UserCreationForm(request.POST)
 	if form.is_valid():
+		username = request.POST['username']
+		password = request.POST['password']
+		user = User.objects.create_user(username = username,
+						password = password)
+		user.save()
 		form.save()
 		return HttpResponseRedirect('register_success')
 
+    else:
+	form = UserCreationForm()
     args={}
     
     args['form'] = BootstrapAuthenticationForm()

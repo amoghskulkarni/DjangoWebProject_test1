@@ -1,3 +1,4 @@
+'''
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn import linear_model
@@ -10,18 +11,18 @@ import mlpy
 from scipy.cluster.vq import kmeans,vq
 
 '''
-This is a test method to see if numpy works and if data can be passed to this file's function
+#This is a test method to see if numpy works and if data can be passed to this file's function
 '''
 def testAnalytics(query):
     return query + " reached analytics file"
 
 '''
-1.  Parses the input file. 
-2.  Format should be : values separted by commas for each input. Inputs are separted by ';'
-3.  The supervised flag denotes if learning is supervised or unsupervised
-4.  If supervised, The last entry of each entry is assumed to be the output/label.
-5.  If values are not convertible to floats or length of inputs are different, then two empty lists are returned. 
-6.  Else one list(unsupervised)/two lists x and y(supervised) are returned
+#1.  Parses the input file. 
+#2.  Format should be : values separted by commas for each input. Inputs are separted by ';'
+#3.  The supervised flag denotes if learning is supervised or unsupervised
+#4.  If supervised, The last entry of each entry is assumed to be the output/label.
+#5.  If values are not convertible to floats or length of inputs are different, then two empty lists are returned. 
+#6.  Else one list(unsupervised)/two lists x and y(supervised) are returned
 '''
 def parseFile(filename,supervised):
     incorrectFormat = False #incorrect input flag
@@ -68,15 +69,15 @@ def parseFile(filename,supervised):
             return []
 
 '''
-Creates a unique Filename
+#Creates a unique Filename
 '''
 def getFilename():
     #return filename
     return str(uuid.uuid4())
 
 '''
-learns a linear regression model over the data. If there is an error in parsing the file,
-returns empty list. Otherwise returns coefficients and intercept with filename of plotted image
+#learns a linear regression model over the data. If there is an error in parsing the file,
+#returns empty list. Otherwise returns coefficients and intercept with filename of plotted image
 '''
 def linearRegressionLearn(filename):
     x,y = parseFile(Filename)
@@ -101,9 +102,9 @@ def linearRegressionLearn(filename):
             return [regr.coef_,regr.intercept_]
 
 '''
-learns a non-linear regression model over the data. If there is an error in parsing the file,
-returns empty list. Otherwise returns coefficients and intercept with filename of plotted image
-Currently only 1D features can be handled using the model y = a + b*x+ c*x**2
+#learns a non-linear regression model over the data. If there is an error in parsing the file,
+#returns empty list. Otherwise returns coefficients and intercept with filename of plotted image
+#Currently only 1D features can be handled using the model y = a + b*x+ c*x**2
 '''
 def nonLinearRegressionLearn(filename):
     x=[]
@@ -137,14 +138,14 @@ def nonLinearRegressionLearn(filename):
         return []
 
 '''
-return evaluated value for x
+#return evaluated value for x
 '''
 def pevalNonLinearReg(x,a,b,c):
     #return evaluated value for x
     return a + b*x+ c*x**2
 
 '''
-Does Logistic regression and returns weights for the input variables
+#Does Logistic regression and returns weights for the input variables
 '''
 def logisticRegressionLearn(filename):
     x,yTemp = parseFile(filename,False)
@@ -157,7 +158,7 @@ def logisticRegressionLearn(filename):
     return weights
 
 '''
-Does k-means clustering on the data and returns 
+#Does k-means clustering on the data and returns 
 '''
 def kMeansLearn(filename,k):
     x = parseFile(filename,False)
@@ -165,3 +166,4 @@ def kMeansLearn(filename,k):
     cent,var = kmeans(xArr,k)
     return cent,var
    
+'''
