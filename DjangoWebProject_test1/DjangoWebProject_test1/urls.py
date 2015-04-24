@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     url(r'^$', 'app.views.home', name='home'),
     url(r'^contact$', 'app.views.contact', name='contact'),
     url(r'^about', 'app.views.about', name='about'),
-    url(r'^login/$',
+    url(r'^login$',
         'django.contrib.auth.views.login',
         {
             'template_name': 'app/login.html',
@@ -44,5 +44,7 @@ urlpatterns = patterns('',
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^mypage$', 'app.views.mypage', name='mypage'),
     url(r'^upload$', 'app.views.upload', name='upload'),
-    url(r'^testPost$', 'app.views.testPost', name='testPost')
+    url(r'^testPost$', 'app.views.testPost', name='testPost'),
+    url(r'^register$', 'app.views.register', name='register'),
+    url(r'^register_success$', 'app.views.register_success', name='register_success'),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
