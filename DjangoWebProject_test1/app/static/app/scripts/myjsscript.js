@@ -13,9 +13,8 @@
     });
     $('#postButton').click(function (e) {
         e.preventDefault();
-        alert("clicked");
-//      var data = 'Joe is a good boy';
-        var DATA = 'test data';
+        alert("Click!");
+       var DATA = 'test data';
         $.ajax({
             url:"/testPost",
             type: "POST",

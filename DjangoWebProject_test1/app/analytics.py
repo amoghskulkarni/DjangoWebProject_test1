@@ -1,15 +1,4 @@
 '''
-import matplotlib.pyplot as plt
-import numpy as np
-from sklearn import linear_model
-import uuid
-import compiler
-from math import *
-import re
-from scipy.optimize import curve_fit
-import mlpy
-from scipy.cluster.vq import kmeans,vq
-=======
 #import matplotlib.pyplot as plt
 #import numpy as np
 #from sklearn import linear_model
@@ -20,15 +9,11 @@ from scipy.cluster.vq import kmeans,vq
 #from scipy.optimize import curve_fit
 #import mlpy
 #from scipy.cluster.vq import kmeans,vq
->>>>>>> 31752d83e77e1026afd5b4b61ca63bbec4f3072e
-
 '''
 #This is a test method to see if numpy works and if data can be passed to this file's function
-'''
 def testAnalytics(query):
     return query + " reached analytics file"
 
-'''
 #1.  Parses the input file. 
 #2.  Format should be : values separted by commas for each input. Inputs are separted by ';'
 #3.  The supervised flag denotes if learning is supervised or unsupervised

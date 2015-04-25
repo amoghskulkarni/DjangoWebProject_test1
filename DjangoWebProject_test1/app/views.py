@@ -19,6 +19,8 @@ from app.forms import BootstrapAuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+from app.analytics import testAnalytics
+
 
 #Ayan: Added import analytics
 #from analytics import testAnalytics
@@ -125,24 +127,22 @@ def testPost(request):
 @csrf_exempt    
 def register(request):
     if request.method == 'POST':
-	form = UserCreationForm(request.POST)
-	if form.is_valid():
-		username = request.POST['username']
-		password = request.POST['password']
-		user = User.objects.create_user(username = username,
-						password = password)
-		user.save()
-		form.save()
-		return HttpResponseRedirect('register_success')
-
+        form = UserCreationForm(request.POST)
+    if form.is_valid():
+        username = request.POST['username']
+        password = request.POST['password']
+        user = User.objects.create_user(username = username, password = password)
+        user.save()
+        form.save()
+        return HttpResponseRedirect('register_success')
     else:
-	form = UserCreationForm()
-    args={}
-    
-    args['form'] = UserCreationForm()
-    print args
-    return render_to_response('app/register.html', args)
-	
+        form = UserCreationForm()
+        args={}    
+        args['form'] = UserCreationForm()
+        print args
+        return render_to_response('app/register.html', args)
+
+
 def register_success(request):
     return render_to_request('app/register_success.html')
 
