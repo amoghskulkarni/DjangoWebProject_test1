@@ -1,15 +1,15 @@
-'''
-#import matplotlib.pyplot as plt
-#import numpy as np
-#from sklearn import linear_model
-#import uuid
-#import compiler
-#from math import *
-#import re
-#from scipy.optimize import curve_fit
-#import mlpy
-#from scipy.cluster.vq import kmeans,vq
-'''
+
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn import linear_model
+import uuid
+import compiler
+from math import *
+import re
+from scipy.optimize import curve_fit
+import mlpy
+from scipy.cluster.vq import kmeans,vq
+
 #This is a test method to see if numpy works and if data can be passed to this file's function
 def testAnalytics(query):
     return query + " reached analytics file"
@@ -20,7 +20,7 @@ def testAnalytics(query):
 #4.  If supervised, The last entry of each entry is assumed to be the output/label.
 #5.  If values are not convertible to floats or length of inputs are different, then two empty lists are returned. 
 #6.  Else one list(unsupervised)/two lists x and y(supervised) are returned
-'''
+
 def parseFile(filename,supervised):
     incorrectFormat = False #incorrect input flag
     x = [] #features
@@ -161,6 +161,19 @@ def kMeansLearn(filename,k):
     x = parseFile(filename,False)
     xArr = np.array(x)
     cent,var = kmeans(xArr,k)
-    return cent,var
+    #plot the points. Possible only if the initial dimension is 2
+    ids,_ = vq(xArr,cent)
+    colors = cm.rainbow(np.linspace(0, 1, k+1))
+    for counter in range(0,k):
+        plt.scatter(xArr[ids==counter,0],xArr[ids==counter,1],color=colors[counter],linewidth=3)
+    #plot the centroids and the data only if data is of dimension 2
+    if len(xArr[0])==2:
+        for counter in range(0,len(cent)):
+            plt.scatter(cent[counter][0],cent[counter][1],color=colors[len(colors)-1])
+        filenameToSave = getFilename()+".png"
+        plt.savefig(filenameToSave)
+        return [cent,var,filenameToSave]
+    else:
+        return[cent,var]
    
-'''
+
