@@ -117,16 +117,11 @@ def testPost(request):
     print testAnalytics(dataFromClient)
     return HttpResponse("Success!")
 
-
-#@csrf_exempt
-#def testImageResponse(request):
-#    response = HttpResponse(content_type="image/png")
-#    img = Image.open("D:\Vanderbilt\Web programming\\testImage.png")
-#    img.save(response,'png')
-#    return response
-
-#@csrf_exempt    
-
+def suggestions(request):   
+    print "This is to test"
+    dataFromClient = dict(request.POST)['data'][0]
+    print testAnalytics(dataFromClient)
+    return HttpResponse("Success!")
 
 def register(request):
     if request.method == 'POST':

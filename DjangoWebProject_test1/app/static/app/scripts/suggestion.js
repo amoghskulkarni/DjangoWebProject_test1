@@ -2,33 +2,21 @@
 
     $('#suggButton').click(function (e) {
         e.preventDefault();
-        //get radio button values
+
+        // Get radio button values
         var size = $('input:radio[name=size]:checked').val();
         var categorical = $('input:radio[name=categorical]:checked').val();
         var labelled = $('input:radio[name=labelled]:checked').val();
         var numClusters = $('input:radio[name=numClusters]:checked').val();
-        if (!$("input[name=size]:checked").val()) {
+
+        if ((typeof size === "undefined") || (typeof categorical === "undefined") || (typeof labelled === "undefined") || (typeof numClusters === "undefined")) {
             alert('Please answer all the questions!');
         }
-        else if (!$("input[name=categorical]:checked").val()) {
-            alert('Please answer all the questions!');
-        }
-        else if (!$("input[name=labelled]:checked").val()) {
-            alert('Please answer all the questions!');
-        }
-        else if (!$("input[name=size]:numClusters").val()) {
-            alert('Please answer all the questions!');
-        }
-        else{
-            alert("inside this block");
-            alert(String(size));
-            alert(String(categorical));
-            alert(String(labelled));
-            alert(String(numClusters));
-            var DATA = size + "," + categorical+ "," + labelled + "," + numClusters;
-            alert(DATA)
+        else {
+            var DATA = size + "," + categorical + "," + labelled + "," + numClusters;
+            // alert(DATA);
             $.ajax({
-                url: "/testImageResponse",
+                url: "/suggestions",
                 type: "POST",
                 //data: data,
                 data: { 'data': DATA, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value },
@@ -42,7 +30,6 @@
                     alert("error doing something");
                 }
             });
-    }
+        }
     });
-
 });
