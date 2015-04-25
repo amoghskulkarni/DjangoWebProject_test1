@@ -85,6 +85,12 @@ def linearRegressionLearn(filename):
         regr = linear_model.LinearRegression()
         # Train the model using the training sets
         regr.fit(x,y)
+        #write the results to a file:
+        filenameResults = getFilename() + ".txt"
+        with open(filenameResults,'w+') as results:
+            results.write("The regression coefficients are : " + str(regr.coef_) + "\n")
+            results.write("The intercept is : " + str(regr.intercept_) + "\n")
+            results.flush()
         #generate plot of the fitted model. Only possible for 2D data
         if len(x[0])==1:    
             plt.scatter(x,y,color='black')
@@ -94,9 +100,9 @@ def linearRegressionLearn(filename):
             #generate a filename
             filename = getFilename()+".png" 
             plt.savefig(filename)
-            return [regr.coef_,regr.intercept_,filename]
+            return [filenameResults,filename]
         else:
-            return [regr.coef_,regr.intercept_]
+            return [filenameResults]
 
 '''
 #learns a non-linear regression model over the data. If there is an error in parsing the file,
@@ -124,13 +130,19 @@ def nonLinearRegressionLearn(filename):
         predictedPoly = []
         for element in testx:
             predictedPoly.append(peval(element,parameters[0],parameters[1],parameters[2]))
+        #write results to a file
+        filenameResults = getFilename() + ".txt"
+        with open(filenameResults,'w+') as results:
+            results.write("The regression coefficients are : " + str(parameters) + "\n")
+            results.write("The covariance is is : " + str(paramCov) + "\n")
+            results.flush()
         # Plot outputs
         pl.scatter(X,Y,  color='red', s = 5)
         pl.scatter(testx,predictedPoly,  color='black', s = 1)
         filenameToSave = getFilename()+".png" 
         plt.savefig(filenameToSave)
         pl.savefig(filenameToSave)
-        return [parameters, paramCov, filenameToSave]
+        return [filenameResults, filenameToSave]
     else:
         return []
 
@@ -152,7 +164,12 @@ def logisticRegressionLearn(filename):
     logisticReg = mlpy.LibLinear(solver_type='l1r_lr')
     logisticReg.learn(x,y)
     weights = logisticReg.w()
-    return weights
+    #write results to a file
+    filenameResults = getFilename() + ".txt"
+    with open(filenameResults,'w+') as results:
+        results.write("The weights are : " + str(weights) + "\n")
+        results.flush()
+    return filenameResults
 
 '''
 #Does k-means clustering on the data and returns 
@@ -166,14 +183,22 @@ def kMeansLearn(filename,k):
     colors = cm.rainbow(np.linspace(0, 1, k+1))
     for counter in range(0,k):
         plt.scatter(xArr[ids==counter,0],xArr[ids==counter,1],color=colors[counter],linewidth=3)
+    #write results to a file
+    filenameResults = getFilename() + ".txt"
+    with open(filenameResults,'w+') as results:
+        results.write("The centroids are : " + str(cent) + "\n")
+        results.write("The variance is : " + str(var) + "\n")
+        results.flush()
     #plot the centroids and the data only if data is of dimension 2
     if len(xArr[0])==2:
         for counter in range(0,len(cent)):
             plt.scatter(cent[counter][0],cent[counter][1],color=colors[len(colors)-1])
         filenameToSave = getFilename()+".png"
         plt.savefig(filenameToSave)
-        return [cent,var,filenameToSave]
+        return [filenameResults,filenameToSave]
     else:
-        return[cent,var]
+        return[filenameResults]
+
+
    
 
