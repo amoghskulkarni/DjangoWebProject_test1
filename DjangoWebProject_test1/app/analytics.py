@@ -198,6 +198,35 @@ def kMeansLearn(filename,k):
         return [filenameResults,filenameToSave]
     else:
         return[filenameResults]
+'''
+Creates a suggestion file based on inputs given. 
+Current suggestions that given are: linearRegression, nonLinearRegression, logisticRegression, GMM, ridgeRegression, linearSVC, linearSVC, kmeans
+'''
+def chooseAnalytics(dataSize,categorical,labeled,numCategoriesKnown):
+    dictinks = {'linearRegression':'http://en.wikipedia.org/wiki/Linear_regression','nonLinearRegression':'http://en.wikipedia.org/wiki/Nonlinear_regression','logisticRegression':'http://en.wikipedia.org/wiki/Logistic_regression','GMM':'http://en.wikipedia.org/wiki/Mixture_model#Gaussian_mixture_model','ridgeRegression':'http://en.wikipedia.org/wiki/Tikhonov_regularization','linearSVC':'http://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html','kmeans':'http://en.wikipedia.org/wiki/K-means_clustering'}
+    message = "We cannot suggest anything based on the input given. Sorry. Considering mailing us with with more details"
+    if dataSize < 50:
+        message = "You should get more data to learn a model and get any meaningful estimate"
+    else:
+        if categorical:
+            if labeled:
+                message = "Logistic Regression sounds like the need of the hour"
+                tutorialLink = dictinks['logisticRegression']
+            else:
+                if numCategoriesKnown:
+                    message = "Try k-means. It is simple and straight-forward. What else do you need?. In case it doesnt give you good results, try Gaussian Mixture Modelling."
+                    tutorialLink = dictinks['kmeans']
+                else:
+                    message = "Try Linear SVC"
+                    tutorialLink = dictinks['linearSVC']
+        else:
+            message = "Simple linear or non-linear regression is the first thing you should try. If cross-validation doesnt give impressive results, go for Ridge Regression."
+            tutorialLink = dictinks['linearRegression'] + ", " + dictinks['nonLinearRegression'] +" and also "+ dictinks['ridgeRegression']
+    with open("suggestions.txt",'w+') as dest:
+        dest.write(message+"\n")
+        dest.write("Here are resources you might need to learn about these methods : " + "\n")
+        dest.write(tutorialLink)
+        dest.flush()
 
 
    
