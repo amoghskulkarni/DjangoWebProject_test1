@@ -43,7 +43,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^mypage$', 'app.views.mypage', name='mypage'),
-    url(r'^upload$', 'app.views.upload', name='upload'),
+    url(r'^upload$', 'app.views.uploadFile', name='uploadFile'),
     url(r'^testPost$', 'app.views.testPost', name='testPost'),
-    #url(r'^testImageResponse$', 'app.views.testImageResponse', name='testImageResponse')
+    url(r'^applyAnalysis$', 'app.views.applyAnalysis', name='applyAnalysis'),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

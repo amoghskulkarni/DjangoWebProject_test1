@@ -2,9 +2,24 @@
     var nameVal = 'Joe';
     var age = 20;
 
-    $("#mybutton").click(function (event) {
-
+    $("#apply_analysis_btn").click(function (event) {
+        alert('Click!');
+        $.ajax({
+            url: "/applyAnalysis",
+            type: "POST",
+            data: { 'data': DATA, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value },
+            success: function (response) {
+                alert("In success. Got - " + response);
+            },
+            complete: function (response) {
+                alert("In complete. Got - " + response);
+            },
+            error: function (xhr, textStatus, thrownError) {
+                alert("error doing something");
+            }
+        });
     });
+
     $('#postButton').click(function (e) {
         e.preventDefault();
         alert("clicked");
@@ -33,25 +48,5 @@
         //}, function (error) {
         //    console.log("error!!")
         //});
-    });
-    $('#imgButton').click(function (e) {
-        e.preventDefault();
-        alert("get image clicked");
-        var DATA = 'test data';
-        $.ajax({
-            url: "/testImageResponse",
-            type: "POST",
-            //data: data,
-            data: { 'data': DATA, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value },
-            success: function (response) {
-                alert("In success. Got - " + response);
-            },
-            complete: function (response) {
-                document.getElementById('imageDiv').style.backgroundImage = response //incorrect line
-            },
-            error: function (xhr, textStatus, thrownError) {
-                alert("error doing something");
-            }
-        });
     });
 });

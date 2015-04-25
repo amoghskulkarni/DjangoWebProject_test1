@@ -75,7 +75,7 @@ def mypage(request):
         })
     )
 
-def upload(request):
+def uploadFile(request):
     # Handle file upload
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
@@ -84,7 +84,7 @@ def upload(request):
             newdoc.save()
 
             # Redirect to the document list after POST
-            return HttpResponseRedirect(reverse('app.views.upload'))
+            return HttpResponseRedirect(reverse('app.views.uploadFile'))
     else:
         form = DocumentForm() # A empty, unbound form
 
@@ -97,6 +97,12 @@ def upload(request):
         {'documents': documents, 'form': form},
         context_instance=RequestContext(request)
     )
+
+def applyAnalysis(request):
+    print "This is to test : "
+    dataFromClient = dict(request.POST)['data'][0]
+    print testAnalytics(dataFromClient)
+    return HttpResponse("Success!")
 
 def testPost(request):
     print "This is to test : "

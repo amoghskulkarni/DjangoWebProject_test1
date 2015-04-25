@@ -1,9 +1,12 @@
 ﻿{% extends "app/layout.html" %}
 
 {% block content %}
+
+{% csrf_token %}
+
     <div class="form-group">
         <!-- Upload form. Note enctype attribute! -->
-        <form action="{% url "upload" %}" method="post" enctype="multipart/form-data">
+        <form action="{% url "uploadFile" %}" method="post" enctype="multipart/form-data">
 	        {% csrf_token %}
 	        <p>{{ form.non_field_errors }}</p>
 	        <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
@@ -70,14 +73,14 @@
         <div class="btn-group" role="group" aria-label="...">
             <div class="btn-group" role="group">
                 <select id="groups" class="form-control">
-                    <option value="A"> A </option>
-                    <option value="B"> B </option>
-                    <option value="C"> C </option>
-                    <option value="D"> D </option>
+                    <option value="Analysis A"> Analysis A </option>
+                    <option value="Analysis B"> Analysis B </option>
+                    <option value="Analysis C"> Analysis C </option>
+                    <option value="Analysis D"> Analysis D </option>
                 </select>
             </div>
 
-            <button type="button" class="btn btn-default"> Apply </button>
+            <button id="apply_analysis_btn" type="button" class="btn btn-default"> Apply </button>
         </div>
     </div>
 
