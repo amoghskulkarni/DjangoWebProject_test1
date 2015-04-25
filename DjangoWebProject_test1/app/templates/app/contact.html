@@ -2,19 +2,28 @@
 
 {% block content %}
 
-<h2>{{ title }}.</h2>
-<h3>{{ message }}</h3>
+<form action="">
+<p>Answer the following questions and we will tell you what analysis to perform: </p>
+<p>1. What is the approximate number of observations you have in your data?</p>
+<input type="radio" name="size" value="less">less than 50<br>
+<input type="radio" name="size" value="more">more than 50<br>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<p>2. Is your output categorical?</p>
+<input type="radio" name="size" value="yes">Yes<br>
+<input type="radio" name="size" value="no">No<br>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<p>3. Are your outputs labelled?</p>
+<input type="radio" name="size" value="yes">Yes<br>
+<input type="radio" name="size" value="no">No<br>
+
+<p>4. If your data is just a bunch of observations that you want to cluster, do you know the number of clusters?</p>
+<input type="radio" name="size" value="yes">Yes<br>
+<input type="radio" name="size" value="no">No<br>
+
+</form>
+
+<div class="jumbotron">
+    <p><a id="suggButton" class="btn btn-primary btn-large">Answer the following questions and we will tell you what analysis to perform! &raquo;</a></p>
+</div>
 
 {% endblock %}
