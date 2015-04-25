@@ -43,11 +43,9 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^mypage$', 'app.views.mypage', name='mypage'),
-    url(r'^upload$', 'app.views.upload', name='upload'),
+    url(r'^upload$', 'app.views.uploadFile', name='uploadFile'),
     url(r'^testPost$', 'app.views.testPost', name='testPost'),
-
-    #url(r'^testImageResponse$', 'app.views.testImageResponse', name='testImageResponse')
-
+    url(r'^applyAnalysis$', 'app.views.applyAnalysis', name='applyAnalysis'),
     url(r'^register$', 'app.views.register', name='register'),
     url(r'^register_success$', 'app.views.register_success', name='register_success'),
 

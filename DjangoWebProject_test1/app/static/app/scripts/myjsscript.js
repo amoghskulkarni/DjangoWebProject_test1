@@ -13,8 +13,7 @@
     });
     $('#postButton').click(function (e) {
         e.preventDefault();
-        alert("clicked");
-//      var data = 'Joe is a good boy';
+        alert("Click!");
         var DATA = 'test data';
         $.ajax({
             url:"/testPost",
@@ -31,14 +30,7 @@
                 alert("error doing something");
                 }
             });
-        //});
-        //$.post("/testPost", {
-        //    testParam : "test Value"
-        //}, function (event) {
-        //    console.log("success post request!!!");
-        //}, function (error) {
-        //    console.log("error!!")
-        //});
+        alert('Sent ajax request!');
     });
     $('#imgButton').click(function (e) {
         e.preventDefault();

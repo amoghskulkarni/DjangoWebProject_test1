@@ -19,6 +19,8 @@ from app.forms import BootstrapAuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+from app.analytics import testAnalytics
+
 
 #Ayan: Added import analytics
 #from analytics import testAnalytics
@@ -80,7 +82,7 @@ def mypage(request):
         })
     )
 
-def upload(request):
+def uploadFile(request):
     # Handle file upload
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
@@ -89,7 +91,7 @@ def upload(request):
             newdoc.save()
 
             # Redirect to the document list after POST
-            return HttpResponseRedirect(reverse('app.views.upload'))
+            return HttpResponseRedirect(reverse('app.views.uploadFile'))
     else:
         form = DocumentForm() # A empty, unbound form
 
@@ -102,6 +104,12 @@ def upload(request):
         {'documents': documents, 'form': form},
         context_instance=RequestContext(request)
     )
+
+def applyAnalysis(request):
+    print "This is to test : "
+    dataFromClient = dict(request.POST)['data'][0]
+    print testAnalytics(dataFromClient)
+    return HttpResponse("Success!")
 
 def testPost(request):
     print "This is to test : "
@@ -119,24 +127,22 @@ def testPost(request):
 @csrf_exempt    
 def register(request):
     if request.method == 'POST':
-	form = UserCreationForm(request.POST)
-	if form.is_valid():
-		username = request.POST['username']
-		password = request.POST['password']
-		user = User.objects.create_user(username = username,
-						password = password)
-		user.save()
-		form.save()
-		return HttpResponseRedirect('register_success')
-
+        form = UserCreationForm(request.POST)
+    if form.is_valid():
+        username = request.POST['username']
+        password = request.POST['password']
+        user = User.objects.create_user(username = username, password = password)
+        user.save()
+        form.save()
+        return HttpResponseRedirect('register_success')
     else:
-	form = UserCreationForm()
-    args={}
-    
-    args['form'] = UserCreationForm()
-    print args
-    return render_to_response('app/register.html', args)
-	
+        form = UserCreationForm()
+        args={}    
+        args['form'] = UserCreationForm()
+        print args
+        return render_to_response('app/register.html', args)
+
+
 def register_success(request):
     return render_to_request('app/register_success.html')
 
