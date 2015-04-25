@@ -117,7 +117,8 @@ def testPost(request):
 #    img = Image.open("D:\Vanderbilt\Web programming\\testImage.png")
 #    img.save(response,'png')
 #    return response
-    
+
+@csrf_exempt    
 def register(request):
     if request.method == 'POST':
 	form = UserCreationForm(request.POST)
@@ -134,7 +135,7 @@ def register(request):
 	form = UserCreationForm()
     args={}
     
-    args['form'] = BootstrapAuthenticationForm()
+    args['form'] = UserCreationForm()
     print args
     return render_to_response('app/register.html', args)
 	
