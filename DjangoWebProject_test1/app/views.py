@@ -124,7 +124,7 @@ def testPost(request):
 #    img.save(response,'png')
 #    return response
 
-@csrf_exempt    
+#@csrf_exempt    
 def register(request):
     if request.method == 'POST':
         form = BootstrapAuthenticationForm(request.POST)
@@ -140,9 +140,26 @@ def register(request):
     args={}    
     args['form'] = BootstrapAuthenticationForm()
     print args
-    return render_to_response('app/register.html', args)
+    return render_to_response('app/register.html', args, context_instance = RequestContext(request))
 
 
 def register_success(request):
     return render_to_request('app/register_success.html')
 
+#@csrf_exempt    
+def login(request):
+    if request.method == 'POST':
+        form = BootstrapAuthenticationForm(request.POST)
+    	if form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
+            user = User.objects.create_user(username = username, password = password)
+            if user.check_password(password):
+                return HttpResponse('logged in')
+        else:
+            form = BootstrapAuthenticationForm()
+            return HttpResponse('invalid username or password')
+    return
+
+def logout(request):
+    return
