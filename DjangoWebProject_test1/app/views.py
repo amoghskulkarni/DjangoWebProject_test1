@@ -127,20 +127,20 @@ def testPost(request):
 @csrf_exempt    
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-    if form.is_valid():
-        username = request.POST['username']
-        password = request.POST['password']
-        user = User.objects.create_user(username = username, password = password)
-        user.save()
-        form.save()
-        return HttpResponseRedirect('register_success')
-    else:
-        form = UserCreationForm()
-        args={}    
-        args['form'] = UserCreationForm()
-        print args
-        return render_to_response('app/register.html', args)
+        form = BootstrapAuthenticationForm(request.POST)
+    	if form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
+            user = User.objects.create_user(username = username, password = password)
+            user.save()
+            form.save()
+            return HttpResponseRedirect('register_success')
+        else:
+            form = BootstrapAuthenticationForm()
+    args={}    
+    args['form'] = BootstrapAuthenticationForm()
+    print args
+    return render_to_response('app/register.html', args)
 
 
 def register_success(request):
