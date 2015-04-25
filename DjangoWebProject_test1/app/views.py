@@ -117,6 +117,7 @@ def testPost(request):
     print testAnalytics(dataFromClient)
     return HttpResponse("Success!")
 
+
 #@csrf_exempt
 #def testImageResponse(request):
 #    response = HttpResponse(content_type="image/png")
@@ -125,6 +126,8 @@ def testPost(request):
 #    return response
 
 #@csrf_exempt    
+
+
 def register(request):
     if request.method == 'POST':
         form = BootstrapAuthenticationForm(request.POST)
