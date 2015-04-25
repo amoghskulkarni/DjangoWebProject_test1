@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\static\app\scripts\myjsscript.js" />
+    <Content Include="app\static\app\scripts\suggestion.js" />
     <Content Include="app\static\app\scripts\upload.js" />
     <Content Include="app\templates\app\mypage.html" />
     <Content Include="app\templates\app\upload.html" />
