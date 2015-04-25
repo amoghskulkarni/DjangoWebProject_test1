@@ -140,9 +140,10 @@ def register(request):
             return HttpResponseRedirect('register_success')
         else:
             form = BootstrapAuthenticationForm()
-    args={}    
+    args = {}    
     args['form'] = BootstrapAuthenticationForm()
     print args
+
     return render_to_response('app/register.html', args, context_instance = RequestContext(request))
 
 
@@ -159,10 +160,20 @@ def login(request):
             user = User.objects.create_user(username = username, password = password)
             if user.check_password(password):
                 return HttpResponse('logged in')
+            else:
+                return HttpResponse('could not log in')
         else:
             form = BootstrapAuthenticationForm()
-            return HttpResponse('invalid username or password')
-    return
+            return HttpResponse('invalid form')
+    else:
+        args = {}    
+        args['form'] = BootstrapAuthenticationForm()
+        print args
+
+        return render_to_response('app/register.html', args, context_instance = RequestContext(request))
+
+
+
 
 def logout(request):
-    return
+    return HttpResponse("dummy response")

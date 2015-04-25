@@ -1,4 +1,4 @@
-
+'''
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn import linear_model
@@ -9,6 +9,7 @@ import re
 from scipy.optimize import curve_fit
 import mlpy
 from scipy.cluster.vq import kmeans,vq
+'''
 
 #This is a test method to see if numpy works and if data can be passed to this file's function
 def testAnalytics(query):
@@ -20,7 +21,7 @@ def testAnalytics(query):
 #4.  If supervised, The last entry of each entry is assumed to be the output/label.
 #5.  If values are not convertible to floats or length of inputs are different, then two empty lists are returned. 
 #6.  Else one list(unsupervised)/two lists x and y(supervised) are returned
-
+'''
 def parseFile(filename,supervised):
     incorrectFormat = False #incorrect input flag
     x = [] #features
@@ -199,8 +200,9 @@ def kMeansLearn(filename,k):
     else:
         return[filenameResults]
 '''
-Creates a suggestion file based on inputs given. 
-Current suggestions that given are: linearRegression, nonLinearRegression, logisticRegression, GMM, ridgeRegression, linearSVC, linearSVC, kmeans
+
+# Creates a suggestion file based on inputs given. 
+# Current suggestions that given are: linearRegression, nonLinearRegression, logisticRegression, GMM, ridgeRegression, linearSVC, linearSVC, kmeans
 '''
 def chooseAnalytics(dataSize,categorical,labeled,numCategoriesKnown):
     dictinks = {'linearRegression':'http://en.wikipedia.org/wiki/Linear_regression','nonLinearRegression':'http://en.wikipedia.org/wiki/Nonlinear_regression','logisticRegression':'http://en.wikipedia.org/wiki/Logistic_regression','GMM':'http://en.wikipedia.org/wiki/Mixture_model#Gaussian_mixture_model','ridgeRegression':'http://en.wikipedia.org/wiki/Tikhonov_regularization','linearSVC':'http://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html','kmeans':'http://en.wikipedia.org/wiki/K-means_clustering'}
@@ -228,7 +230,4 @@ def chooseAnalytics(dataSize,categorical,labeled,numCategoriesKnown):
         dest.write(tutorialLink)
         dest.flush()
         #the filename that is created is always named suggestions.txt. So no filename is retruned
-
-
-   
-
+'''
