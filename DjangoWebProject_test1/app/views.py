@@ -80,7 +80,6 @@ def mypage(request):
         })
     )
 
-
 def upload(request):
     # Handle file upload
     if request.method == 'POST':
@@ -104,7 +103,6 @@ def upload(request):
         context_instance=RequestContext(request)
     )
 
-#@csrf_exempt
 def testPost(request):
     print "This is to test : "
     dataFromClient = dict(request.POST)['data'][0]
@@ -141,3 +139,4 @@ def register(request):
 	
 def register_success(request):
     return render_to_request('app/register_success.html')
+
