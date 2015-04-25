@@ -227,6 +227,7 @@ def chooseAnalytics(dataSize,categorical,labeled,numCategoriesKnown):
         dest.write("Here are resources you might need to learn about these methods : " + "\n")
         dest.write(tutorialLink)
         dest.flush()
+        #the filename that is created is always named suggestions.txt. So no filename is retruned
 
 
    
