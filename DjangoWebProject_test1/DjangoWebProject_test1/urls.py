@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     url(r'^$', 'app.views.home', name='home'),
     url(r'^contact$', 'app.views.contact', name='contact'),
     url(r'^about', 'app.views.about', name='about'),
-    url(r'^login$', 'app.view.login', name='login'),
+    url(r'^login$', 'app.views.login', name='login'),
     url(r'^logout$', 'app.views.logout', name='logout'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
