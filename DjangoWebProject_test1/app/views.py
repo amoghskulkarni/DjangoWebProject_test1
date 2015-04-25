@@ -130,10 +130,14 @@ def register(request):
             return HttpResponseRedirect('register_success')
         else:
             form = BootstrapAuthenticationForm()
-    args={}    
+    args = {}    
     args['form'] = BootstrapAuthenticationForm()
     print args
-    return render_to_response('app/register.html', args)
+    return render_to_response(
+        'app/register.html',
+        args,
+        context_instance=RequestContext(request)
+    )
 
 
 def register_success(request):
