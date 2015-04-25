@@ -9,13 +9,12 @@ from django.utils.translation import ugettext_lazy as _
 
 class DocumentForm(forms.Form):
     docfile = forms.FileField(
-        label='Select a file'
+        label='Select a file to upload'
     )
 
     def __init__(self, *args, **kwargs):
         super(DocumentForm, self).__init__(*args, **kwargs)
         self.fields['docfile'].widget.attrs.update({'class': 'form-control'})
-
 
 
 class BootstrapAuthenticationForm(AuthenticationForm):

@@ -75,7 +75,6 @@ def mypage(request):
         })
     )
 
-
 def upload(request):
     # Handle file upload
     if request.method == 'POST':
@@ -104,5 +103,3 @@ def testPost(request):
     dataFromClient = dict(request.POST)['data'][0]
     print testAnalytics(dataFromClient)
     return HttpResponse("Success!")
-
-    
