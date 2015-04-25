@@ -1,11 +1,12 @@
 ﻿$(document).ready(function () {
 
-    $("#apply_analysis_btn").click(function (event) {
+    $('#apply_analysis_btn').click(function (event) {
+        event.preventDefault();
         alert('Click!');
         $.ajax({
             url: "/applyAnalysis",
             type: "POST",
-            data: { 'data': DATA, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value },
+            data: { 'data': $("#analysis_list").val(), csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value },
             success: function (response) {
                 alert("In success. Got - " + response);
             },

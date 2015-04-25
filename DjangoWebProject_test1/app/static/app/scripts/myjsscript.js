@@ -14,7 +14,7 @@
     $('#postButton').click(function (e) {
         e.preventDefault();
         alert("Click!");
-       var DATA = 'test data';
+        var DATA = 'test data';
         $.ajax({
             url:"/testPost",
             type: "POST",
@@ -30,14 +30,7 @@
                 alert("error doing something");
                 }
             });
-        //});
-        //$.post("/testPost", {
-        //    testParam : "test Value"
-        //}, function (event) {
-        //    console.log("success post request!!!");
-        //}, function (error) {
-        //    console.log("error!!")
-        //});
+        alert('Sent ajax request!');
     });
     $('#imgButton').click(function (e) {
         e.preventDefault();
