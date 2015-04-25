@@ -43,12 +43,11 @@ Temporary Items
 .apdisk
 
 
-*node_modules*
-*vagrant*
 *~*
 *#*
 *dll*
 *tmp*
 *.dat.*
 *.pyc
-*.ntvs_analysis.dat.tmp*
+*.tmp*
+*.v12.suo

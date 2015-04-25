@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
     <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    {% block myhead %}{% endblock %}
 </head>
 
 <body>
@@ -28,7 +29,7 @@
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li><a href="{% url 'contact' %}">Contact</a></li>
                     <li><a href="{% url 'mypage' %}">My Page</a></li>
-                    <li><a href="{% url 'upload' %}">Upload</a></li>
+                    <li><a href="{% url 'uploadFile' %}">Upload</a></li>
                 </ul>
                 {% include 'app/loginpartial.html' %}
             </div>

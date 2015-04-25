@@ -2,31 +2,93 @@
 
 {% block content %}
 
-    {% if documents %}
-	    <div class="form-group">
-            <select id="uploaded_files" class="form-control">
-	        {% for document in documents %}
-		        <option value="{{ document.docfile.name }}" href="{{ document.docfile.url }}"> {{ document.docfile.name }} </option>
-	        {% endfor %}
-            </select>
-	    </div>
-    {% else %}
-	    <p>No documents.</p>
-    {% endif %}
+{% csrf_token %}
 
+    <div class="form-group">
+        <!-- Upload form. Note enctype attribute! -->
+        <form action="{% url "uploadFile" %}" method="post" enctype="multipart/form-data">
+	        {% csrf_token %}
+	        <p>{{ form.non_field_errors }}</p>
+	        <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+	        <p>
+		        {{ form.docfile.errors }}
+		        {{ form.docfile }}
+	        </p>
+	        <p><input class="btn btn-default" type="submit" value="Upload" /></p>
+        </form>
+    </div>
 
-    <!-- Upload form. Note enctype attribute! -->
-    <form action="{% url "upload" %}" method="post" enctype="multipart/form-data">
-	    {% csrf_token %}
-	    <p>{{ form.non_field_errors }}</p>
-	    <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
-	    <p>
-		    {{ form.docfile.errors }}
-		    {{ form.docfile }}
-	    </p>
-	    <p><input class="btn btn-default" type="submit" value="Upload" /></p>
-    </form>
+    <div class="form-group">
+        <label> OR Select a file already uploaded: </label>
+        {% if documents %}
+        <!--
+        <div class="dropdown">
+            <button id="uploaded_files" class="btn btn-default dropdown-toggle" type="button"  data-toggle="dropdown">
+                Already uploaded files
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="uploaded_files">
+                {% for document in documents %}
+                    <li role="presentation"><a role="menuitem" tabindex="-1" id="{{ document.docfile.name }}" href="{{ document.docfile.url }}"> {{ document.docfile.name }} </a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        -->
+        <select id="uploaded_files" size="5" class="form-control">
+            {% for document in documents %}
+                <option value="{{ document.docfile.name }}" href="{{ document.docfile.url }}"> {{ document.docfile.name }} </option>
+            {% endfor %}
+        </select>
+        {% else %}
+        <p>
+            No documents uploaded yet.
+        </p>
+        {% endif %}
+    </div>
 
-    
+    <hr/>
+
+    <div class="form-group">
+        <label>Do an analysis!</label>
+        <!--
+        <div class="btn-group" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                Analysis
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a id="A">A</a></li>
+                <li><a id="B">B</a></li>
+                <li><a id="C">C</a></li>
+                <li><a id="D">D</a></li>
+            </ul>
+            </div>
+
+            <button type="button" class="btn btn-default"> Apply </button>
+        </div>
+        -->
+    </div>
+    <div class="form-group">
+        <div class="btn-group" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <select id="analysis_list" class="form-control">
+                    <option value="A"> Analysis A </option>
+                    <option value="B"> Analysis B </option>
+                    <option value="C"> Analysis C </option>
+                    <option value="D"> Analysis D </option>
+                </select>
+            </div>
+
+            <button id="apply_analysis_btn" type="button" class="btn btn-default"> Apply </button>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+{% load staticfiles %}
+<script src="{% static 'app/scripts/upload.js' %}"></script>
 
 {% endblock %}

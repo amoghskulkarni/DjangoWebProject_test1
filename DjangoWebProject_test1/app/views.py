@@ -15,8 +15,15 @@ from django.views.decorators.csrf import csrf_exempt
 from app.models import Document
 from app.forms import DocumentForm
 
+from app.forms import BootstrapAuthenticationForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
+from app.analytics import testAnalytics
+
+
 #Ayan: Added import analytics
-from analytics import testAnalytics
+#from analytics import testAnalytics
 #Ayan: Added image import
 #from PIL import Image
 
@@ -75,8 +82,7 @@ def mypage(request):
         })
     )
 
-
-def upload(request):
+def uploadFile(request):
     # Handle file upload
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
@@ -85,7 +91,7 @@ def upload(request):
             newdoc.save()
 
             # Redirect to the document list after POST
-            return HttpResponseRedirect(reverse('app.views.upload'))
+            return HttpResponseRedirect(reverse('app.views.uploadFile'))
     else:
         form = DocumentForm() # A empty, unbound form
 
@@ -99,17 +105,37 @@ def upload(request):
         context_instance=RequestContext(request)
     )
 
-#@csrf_exempt
+def applyAnalysis(request):
+    print "This is to test : "
+    dataFromClient = dict(request.POST)['data'][0]
+    print testAnalytics(dataFromClient)
+    return HttpResponse("Success!")
+
 def testPost(request):
     print "This is to test : "
     dataFromClient = dict(request.POST)['data'][0]
     print testAnalytics(dataFromClient)
     return HttpResponse("Success!")
 
-#@csrf_exempt
-#def testImageResponse(request):
-#    response = HttpResponse(content_type="image/png")
-#    img = Image.open("D:\Vanderbilt\Web programming\\testImage.png")
-#    img.save(response,'png')
-#    return response
-    
+@csrf_exempt    
+def register(request):
+    if request.method == 'POST':
+        form = BootstrapAuthenticationForm(request.POST)
+    	if form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
+            user = User.objects.create_user(username = username, password = password)
+            user.save()
+            form.save()
+            return HttpResponseRedirect('register_success')
+        else:
+            form = BootstrapAuthenticationForm()
+    args={}    
+    args['form'] = BootstrapAuthenticationForm()
+    print args
+    return render_to_response('app/register.html', args)
+
+
+def register_success(request):
+    return render_to_request('app/register_success.html')
+
