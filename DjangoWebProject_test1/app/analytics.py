@@ -14,6 +14,7 @@ from scipy.cluster.vq import kmeans,vq
 #This is a test method to see if numpy works and if data can be passed to this file's function
 def testAnalytics(query):
     return query + " reached analytics file"
+    
 
 #1.  Parses the input file. 
 #2.  Format should be : values separted by commas for each input. Inputs are separted by ';'
