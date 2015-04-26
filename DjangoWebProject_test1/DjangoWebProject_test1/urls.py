@@ -33,5 +33,6 @@ urlpatterns = patterns('',
     url(r'^register$', 'app.views.register', name='register'),
     url(r'^register_success$', 'app.views.register_success', name='register_success'),
     url(r'^suggestions$', 'app.views.suggestions', name='suggestions'),
-
+    url(r'^showText$', 'app.views.showText', name='showText'),
+    url(r'^showImage$', 'app.views.showImage', name='showImage'),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

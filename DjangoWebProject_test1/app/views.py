@@ -107,45 +107,36 @@ def uploadFile(request):
     )
 
 def applyAnalysis(request):
-    #fig=Figure()
-    #ax=fig.add_subplot(111)
-    #x=[]
-    #y=[]
-    #now=datetime.now()
-    #delta=timedelta(days=1)
-    #for i in range(10):
-    #    x.append(now)
-    #    now+=delta
-    #    y.append(random.randint(0, 1000))
-    #ax.plot_date(x, y, '-')
-    #ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
-    #fig.autofmt_xdate()
-    #canvas=FigureCanvas(fig)
-    #response=django.http.HttpResponse(content_type='image/png')
-    #canvas.print_png(response)
-    #return response
-
     print "This is to test : "
-    dataFromClient = dict(request.POST)['data'][0]
-    print testAnalytics(dataFromClient)
-    # return HttpResponse("Success!")
-    img = Image.open('../DjangoWebProject_test1/media/documents/2015/04/22/test_result_a.png')
+    datafile = dict(request.POST)['datafile'][0]
+    analysis = dict(request.POST)['analysis'][0]
+    print datafile
+    print analysis
+    ret = testAnalytics(analysis)
+    return HttpResponse("Success!")
+
+def showImage(request):
+    datafile = dict(request.POST)['datafile'][0]
+    analysis = dict(request.POST)['analysis'][0]
+    print datafile
+    print analysis
+    # Construct the path of image from - username, datafile and analysis
+    path = '../DjangoWebProject_test1/media/documents/2015/04/22/test_result_a.png'
+    img = Image.open(path)
     with open("../DjangoWebProject_test1/media/documents/2015/04/22/test_result_a.png", "rb") as image_file:
         encoded_string = base64.b64encode(image_file.read())
-    #image_data = img.partition('base64,')[2]
-    #binary = base64.b64decode(image_data)
     return HttpResponse(encoded_string)
 
-
-    #return render(
-    #    request,
-    #    'app/upload.html',
-    #    context = RequestContext(
-    #        request,
-    #        { 'img' : img }
-    #        ),
-    #    content_type = 'image/png')
-
+def showText(request):
+    datafile = dict(request.POST)['datafile'][0]
+    analysis = dict(request.POST)['analysis'][0]
+    print datafile
+    print analysis
+    # Construct the path of image from - username, datafile and analysis
+    path = '../DjangoWebProject_test1/media/documents/2015/04/22/test_result_a.txt'
+    textfile = open(path, "rb")
+    return HttpResponse(textfile, content_type="text/plain");
+    
 
 def testPost(request):
     print "This is to test : "

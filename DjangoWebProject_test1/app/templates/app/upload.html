@@ -6,7 +6,7 @@
 
     <div class="form-group">
         <!-- Upload form. Note enctype attribute! -->
-        <form action="{% url "uploadFile" %}" method="post" enctype="multipart/form-data">
+        <form action={% url "uploadFile" %} method="post" enctype="multipart/form-data">
 	        {% csrf_token %}
 	        <p>{{ form.non_field_errors }}</p>
 	        <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
@@ -19,24 +19,13 @@
     </div>
 
     <div class="form-group">
-        <label> OR Select a file already uploaded: </label>
+        <label> Select the file on which you want to run analysis: </label>
         {% if documents %}
-        <!--
-        <div class="dropdown">
-            <button id="uploaded_files" class="btn btn-default dropdown-toggle" type="button"  data-toggle="dropdown">
-                Already uploaded files
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="uploaded_files">
-                {% for document in documents %}
-                    <li role="presentation"><a role="menuitem" tabindex="-1" id="{{ document.docfile.name }}" href="{{ document.docfile.url }}"> {{ document.docfile.name }} </a></li>
-                {% endfor %}
-            </ul>
-        </div>
-        -->
-        <select id="uploaded_files" size="5" class="form-control">
+        <select id="uploaded_files_list" size="5" class="form-control">
             {% for document in documents %}
-                <option value="{{ document.docfile.name }}" href="{{ document.docfile.url }}"> {{ document.docfile.name }} </option>
+                {% for name in document.docfile.file %}
+                    <option value="{{ name }}" href="{{ document.docfile.url }}"> {{ name }} </option>
+                {% endfor %}
             {% endfor %}
         </select>
         {% else %}
@@ -51,6 +40,7 @@
     <div class="form-group">
         <label>Do an analysis!</label>
     </div>
+    <br />
     <div class="form-group">
         <div class="btn-group" role="group" aria-label="...">
             <div class="btn-group" role="group">
@@ -66,26 +56,35 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <br />
+
+    <div class="form-group" style="height: 500px;">
         <div class="col-lg-6">
             <div class="text-center">
-                <button id="show_image_btn" type="button" class="btn btn-default"> Show Image Analysis </button>
+                <button id="show_img_btn" type="button" class="btn btn-default"> Show Image Analysis </button>
             </div>
-            <div id="imagediv">
-                <img id="image" />
+            <br />
+            <br />
+            <br />
+            <div class="text-center" id="imagediv">
             </div>
         </div>
         <div class="col-lg-6">
             <div class="text-center">
-                <button id="show_text_btn" type="button" class="btn btn-default"> Show Image Analysis </button>
+                <button id="show_text_btn" type="button" class="btn btn-default"> Show Text Analysis </button>
             </div>
-            <div id="textdiv">
+            <br />
+            <br />
+            <br />
+            <div class="text-center">
+                <textarea id="textdiv">
+                </textarea>
             </div>
         </div>
     </div>
 
 {% endblock %}
-
+s
 {% block scripts %}
 
 {% load staticfiles %}
