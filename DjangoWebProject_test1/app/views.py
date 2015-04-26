@@ -21,7 +21,13 @@ from django.contrib.auth.models import User
 
 from app.analytics import testAnalytics
 from PIL import Image
-
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
+from matplotlib.dates import DateFormatter
+from datetime import timedelta
+import random
+import django
+import base64
 
 #Ayan: Added import analytics
 #from analytics import testAnalytics
@@ -107,14 +113,36 @@ def uploadFile(request):
     )
 
 def applyAnalysis(request):
+    #fig=Figure()
+    #ax=fig.add_subplot(111)
+    #x=[]
+    #y=[]
+    #now=datetime.now()
+    #delta=timedelta(days=1)
+    #for i in range(10):
+    #    x.append(now)
+    #    now+=delta
+    #    y.append(random.randint(0, 1000))
+    #ax.plot_date(x, y, '-')
+    #ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
+    #fig.autofmt_xdate()
+    #canvas=FigureCanvas(fig)
+    #response=django.http.HttpResponse(content_type='image/png')
+    #canvas.print_png(response)
+    #return response
+
     print "This is to test : "
     dataFromClient = dict(request.POST)['data'][0]
     print testAnalytics(dataFromClient)
     # return HttpResponse("Success!")
     img = Image.open('../DjangoWebProject_test1/media/documents/2015/04/22/test_result_a.png')
-    response = HttpResponse(content_type="image/png")
-    img.save(response, "png")
-    return response
+    with open("../DjangoWebProject_test1/media/documents/2015/04/22/test_result_a.png", "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read())
+    #image_data = img.partition('base64,')[2]
+    #binary = base64.b64decode(image_data)
+    return HttpResponse(encoded_string)
+
+
     #return render(
     #    request,
     #    'app/upload.html',
