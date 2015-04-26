@@ -141,7 +141,7 @@ def applyAnalysis(request):
     #image_data = img.partition('base64,')[2]
     #binary = base64.b64decode(image_data)
     return HttpResponse(encoded_string)
-    return response
+
 
     #return render(
     #    request,
