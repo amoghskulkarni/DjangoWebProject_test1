@@ -21,12 +21,6 @@ from django.contrib.auth.models import User
 
 from app.analytics import testAnalytics
 from PIL import Image
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from matplotlib.figure import Figure
-from matplotlib.dates import DateFormatter
-from datetime import timedelta
-import random
-import django
 import base64
 
 #Ayan: Added import analytics
