@@ -20,6 +20,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 from app.analytics import testAnalytics
+from PIL import Image
 
 
 #Ayan: Added import analytics
@@ -109,7 +110,20 @@ def applyAnalysis(request):
     print "This is to test : "
     dataFromClient = dict(request.POST)['data'][0]
     print testAnalytics(dataFromClient)
-    return HttpResponse("Success!")
+    # return HttpResponse("Success!")
+    img = Image.open('../DjangoWebProject_test1/media/documents/2015/04/22/test_result_a.png')
+    response = HttpResponse(content_type="image/png")
+    img.save(response, "PNG")
+    return response
+    #return render(
+    #    request,
+    #    'app/upload.html',
+    #    context = RequestContext(
+    #        request,
+    #        { 'img' : img }
+    #        ),
+    #    content_type = 'image/png')
+
 
 def testPost(request):
     print "This is to test : "
@@ -117,16 +131,11 @@ def testPost(request):
     print testAnalytics(dataFromClient)
     return HttpResponse("Success!")
 
-
-#@csrf_exempt
-#def testImageResponse(request):
-#    response = HttpResponse(content_type="image/png")
-#    img = Image.open("D:\Vanderbilt\Web programming\\testImage.png")
-#    img.save(response,'png')
-#    return response
-
-#@csrf_exempt    
-
+def suggestions(request):   
+    print "This is to test"
+    dataFromClient = dict(request.POST)['data'][0]
+    print testAnalytics(dataFromClient)
+    return HttpResponse("Success!")
 
 def register(request):
     if request.method == 'POST':
