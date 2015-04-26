@@ -113,7 +113,7 @@ def applyAnalysis(request):
     # return HttpResponse("Success!")
     img = Image.open('../DjangoWebProject_test1/media/documents/2015/04/22/test_result_a.png')
     response = HttpResponse(content_type="image/png")
-    img.save(response, "PNG")
+    img.save(response, "png")
     return response
     #return render(
     #    request,
