@@ -101,8 +101,8 @@ def uploadFile(request):
 
     # Load documents for the list page
     documents = Document.objects.all()
-    #Document.objects.all().delete()
-    #documents = []
+    # Document.objects.all().delete()
+    # documents = []
 
     # Render list page with the documents and the form
     return render_to_response(
