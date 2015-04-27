@@ -88,7 +88,10 @@ def uploadFile(request):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
-            newdoc = Document(docfile = request.FILES['docfile'])
+            #newdoc = Document(docfile = request.FILES['docfile'])
+            newdoc = Document()
+            newdoc.docfile = request.FILES['docfile']
+            newdoc.user = "test2"
             newdoc.save()
 
             # Redirect to the document list after POST
@@ -98,6 +101,8 @@ def uploadFile(request):
 
     # Load documents for the list page
     documents = Document.objects.all()
+    #Document.objects.all().delete()
+    #documents = []
 
     # Render list page with the documents and the form
     return render_to_response(
