@@ -1,4 +1,5 @@
 ﻿{% extends "app/layout.html" %}
+{% load my_template_tags %}
 
 {% block content %}
 
@@ -23,9 +24,10 @@
         {% if documents %}
         <select id="uploaded_files_list" size="5" class="form-control">
             {% for document in documents %}
-                {% for name in document.docfile.file %}
-                    <option value="{{ name }}" href="{{ document.docfile.url }}"> {{ name }} </option>
-                {% endfor %}
+                <!--
+                <option value="{{ document.docfile.name }}" href="{{ document.docfile.url }}"> {{ document.docfile.name }} </option>
+                -->
+                <option value="{{ document.docfile.name|giveFilename }}" href="{{ document.docfile.url }}"> {{ document.docfile.name|giveFilename }} </option>
             {% endfor %}
         </select>
         {% else %}
